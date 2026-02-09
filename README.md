@@ -80,13 +80,13 @@ tgshop.py（Python）
 给 Telegram Bot 提供 **数据获取 / 下单 / 查询状态** 的 API 接口。
 
 ```
-Route::get('/tg/goods', [\App\Http\Controllers\Api\TelegramController::class, 'goodsList']);
+Route::get('/goods', [\App\Http\Controllers\Api\TelegramController::class, 'goodsList']);
 
 // 创建订单（POST）
-Route::post('/tg/create-order', [\App\Http\Controllers\Api\TelegramController::class, 'createOrder']);
+Route::post('/create-order', [\App\Http\Controllers\Api\TelegramController::class, 'createOrder']);
 
-Route::get('/tg/payways', [\App\Http\Controllers\Api\TelegramController::class, 'payways']);
-Route::get('/tg/order-status', [\App\Http\Controllers\Api\TelegramController::class, 'orderStatus']);
+Route::get('/payways', [\App\Http\Controllers\Api\TelegramController::class, 'payways']);
+Route::get('/order-status', [\App\Http\Controllers\Api\TelegramController::class, 'orderStatus']);
 ```
 
 ## 2️⃣ Telegram API 控制器
