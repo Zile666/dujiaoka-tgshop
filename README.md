@@ -2,6 +2,8 @@
 
 > 让 Telegram 下单体验 **完全对齐网页下单逻辑**，而不是“挂名对接”。
 
+![image](https://raw.githubusercontent.com/Zile666/dujiaoka-tgshop/refs/heads/main/bot.gif)
+
 ---
 
 ## 📌 项目背景
@@ -44,13 +46,13 @@
 
 ## 🧩 整体架构
 
-Telegram Bot (python)
-↓
-独角发卡 API（新增 TG 专用接口）
-↓
-OrderProcessService（原生服务）
-↓
-支付 → 订单完成 → Telegram 推送卡密
+Telegram Bot (python)  
+↓  
+独角发卡 API（新增 TG 专用接口）    
+↓  
+OrderProcessService（原生服务）  
+↓  
+支付 → 订单完成 → Telegram 推送卡密  
 
 
 ---
@@ -61,10 +63,10 @@ OrderProcessService（原生服务）
 
 ### ✅ 改动 / 新增文件
 
-routes/api.php
-app/Http/Controllers/Api/TelegramController.php
-app/Jobs/TelegramPush.php
-tgshop.py（Python）
+routes/api.php  
+app/Http/Controllers/Api/TelegramController.php  
+app/Jobs/TelegramPush.php  
+tgshop.py（Python）  
 
 
 ---
@@ -91,9 +93,9 @@ Route::get('/tg/order-status', [\App\Http\Controllers\Api\TelegramController::cl
 
 📍 文件位置：
 
-app/Http/Controllers/Api/TelegramController.php
+app/Http/Controllers/Api/TelegramController.php 
 
-（需新建）
+（需新建，并且自定义token）
 
 ### 关键点说明
 
@@ -101,10 +103,10 @@ app/Http/Controllers/Api/TelegramController.php
 - ❗ 必须调用 `OrderProcessService`
 - 确保以下行为全部生效：
 
-自动扣库存
-卡密预占
-自动过期
-支付状态同步
+自动扣库存  
+卡密预占  
+自动过期  
+支付状态同步  
 
 
 📌 支付方式仍然沿用网页逻辑  
@@ -192,7 +194,7 @@ pip install python-telegram-bot requests
 ```python
 TOKEN = '859xxx81:AAHqkxxxxqFA'
 SHOP_URL = 'https://fk.xxx.xyz'
-API_TOKEN_SECRET = 'xxxxmjj'
+API_TOKEN_SECRET = 'xxxxmjj' #在 app/Http/Controllers/Api/TelegramController.php 设置的token
 EXPIRE_TIME = 10  # 订单检测时间（分钟）
 ```
 
